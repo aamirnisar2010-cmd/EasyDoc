@@ -1,0 +1,21 @@
+{
+  "name": "EasyDoc — Invoice & PDF Maker",
+  "short_name": "EasyDoc",
+  "description": "EasyDoc — Create professional invoices and PDFs easily.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

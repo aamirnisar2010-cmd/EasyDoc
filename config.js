@@ -1,0 +1,2 @@
+// Anon (publishable) key only. NEVER put the service-role key here.
+window.EASYDOC_CONFIG={SUPABASE_URL:"https://tybontvotbbfewyhpqdm.supabase.co",SUPABASE_ANON_KEY:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5Ym9udHZvdGJiZmV3eWhwcWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NDQ3MzcsImV4cCI6MjEwNzUyMDczN30.PnRL1mXmAXtF7bTqkf8mHJhbCIIBgOlcAh-FACjxvW4",FREE_GUEST_INVOICES:1};

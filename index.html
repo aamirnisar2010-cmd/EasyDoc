@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description"
+        content="EasyDoc — Create professional invoices and PDFs easily.">
+
+  <title>EasyDoc — Invoice & PDF Maker</title>
+
+  <link rel="icon" type="image/png" href="./logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    /* Hide splash if app initialization takes too long */
+    window.addEventListener('error', function (event) {
+      console.error('EasyDoc error:', event.message);
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- White Splash Screen -->
+  <div id="splash-screen" role="status" aria-label="Loading EasyDoc">
+    <div class="splash-content">
+
+      <img
+        src="./logo.png"
+        class="splash-logo"
+        alt="EasyDoc Logo"
+        onerror="this.style.display='none';
+          document.getElementById('splash-fallback').style.display='grid';"
+      >
+
+      <div id="splash-fallback" class="logo-fallback" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5">
+          <path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/>
+          <path d="m9 14 2.5 2.5L16 12"/>
+        </svg>
+      </div>
+
+      <h1 class="splash-brand">
+        <span class="l-easy">Easy</span><span class="l-doc">Doc</span>
+      </h1>
+
+      <p class="splash-subtitle">Your business. Simplified.</p>
+
+      <div class="splash-loader">
+        <span></span>
+      </div>
+
+      <small class="splash-caption">Preparing your workspace...</small>
+
+    </div>
+  </div>
+
+  <!-- Main Application -->
+  <main id="app"></main>
+
+  <!-- Bottom Navigation -->
+  <nav id="nav" aria-label="Main navigation">
+
+    <a href="#/home" data-k="home">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="#/invoices" data-k="invoices">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <path d="M14 2v6h6M8 13h8M8 17h8"/>
+      </svg>
+      <span>Invoices</span>
+    </a>
+
+    <!-- Install App Button in Bottom Navigation -->
+    <a href="javascript:void(0)" onclick="triggerInstall()" aria-label="Install App">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span>Install</span>
+    </a>
+
+    <a href="#/account" data-k="account">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
+      </svg>
+      <span>Account</span>
+    </a>
+
+  </nav>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+  <!-- App Configuration and Logic -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => console.log('Service Worker registered!', reg))
+          .catch((err) => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+
+</body>
+</html>
